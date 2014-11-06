@@ -11,10 +11,10 @@
 @interface ViewController : NSViewController
 
 - (IBAction)tapButtonChooseFile:(id)sender;
-- (IBAction)tapButtonLauchAnalyze:(id)sender;
+- (IBAction)tapButtonLaunchAnalyze:(id)sender;
 - (IBAction)tapButtonChooseExportFolder:(id)sender;
 @property (weak) IBOutlet NSTextField *labelFileChoosed;
-@property (weak) IBOutlet NSButton *buttonLauchAnalyze;
+@property (weak) IBOutlet NSButton *buttonLaunchAnalyze;
 @property (weak) IBOutlet NSProgressIndicator *loadingIndicator;
 @property (weak) IBOutlet NSTextField *labelInProgress;
 @property (weak) IBOutlet NSTextField *labelExportFolder;

@@ -77,7 +77,7 @@
 }
 
 
-- (IBAction)tapButtonLauchAnalyze:(id)sender {
+- (IBAction)tapButtonLaunchAnalyze:(id)sender {
     [self analyzeAndSave];
 }
 
@@ -90,7 +90,7 @@
 {
     if([[self.labelFileChoosed stringValue] isEqualToString:@"None"]) {
         [self.labelInProgress setHidden:NO];
-        [self.labelInProgress setStringValue:@"Ples choose the file to analyze"];
+        [self.labelInProgress setStringValue:@"Please choose the file to analyze"];
     } else if([[self.labelExportFolder stringValue] isEqualToString:@"None"]) {
         [self.labelInProgress setHidden:NO];
         [self.labelInProgress setStringValue:@"Please choose an export folder"];
@@ -117,7 +117,7 @@
     [self.buttonChooseFile setEnabled:NO];
     [self.buttonExportFolder setEnabled:NO];
     [self.textfieldUrlFolder setEnabled:NO];
-    [self.buttonLauchAnalyze setEnabled:NO];
+    [self.buttonLaunchAnalyze setEnabled:NO];
     [self.labelInProgress setStringValue:@"Analyze in progress"];
     
     
@@ -160,7 +160,7 @@
     [self.textfieldUrlFolder setEnabled:YES];
     [self.loadingIndicator setHidden:YES];
     [self.labelInProgress setStringValue:@"Finish"];
-    [self.buttonLauchAnalyze setEnabled:YES];
+    [self.buttonLaunchAnalyze setEnabled:YES];
 }
 
 -(NSString*)replaceImageInString:(NSString*)string

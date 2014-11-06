@@ -125,10 +125,15 @@
 }
 -(void)analyzeAndSaveInBackground
 {
-    
-    NSString* fileToSave = [[self.labelExportFolder stringValue] stringByAppendingString:@"/new.sql"];
+    NSDateFormatter *format = [[NSDateFormatter alloc] init];
+    [format setDateFormat:@"yyyy-MM-dd HH-mm-ss"];
+    NSDate *now = [NSDate date];
+    NSString *nowString = [format stringFromDate:now];
     
     NSString* fileToAnalyze = [self.labelFileChoosed stringValue];
+    NSString* fileToAnalyzeExt = [fileToAnalyze pathExtension];
+    
+    NSString* fileToSave = [[self.labelExportFolder stringValue] stringByAppendingString:[NSString stringWithFormat:@"/export - %@.%@", nowString, fileToAnalyzeExt]];
     
     NSError* error;
     NSString * fileContents = [NSString stringWithContentsOfFile:fileToAnalyze encoding:NSUTF8StringEncoding error:&error];
@@ -145,9 +150,7 @@
         [self saveString:newSql toFile:fileToSave];
     }
     
-    
     [self performSelectorOnMainThread:@selector(analyzeAndSaveHasFinish) withObject:nil waitUntilDone:NO];
-    
 }
 
 -(void)analyzeAndSaveHasFinish
@@ -206,7 +209,12 @@
         
         [self saveData:image toFile:[folderToSave stringByAppendingString:nomFichierImage]];
         
-        NSString* replaceByString = [NSString stringWithFormat:@"\"%@/%@\"", [self.textfieldUrlFolder stringValue], nomFichierImage];
+        NSString* urlFolder = [self.textfieldUrlFolder stringValue];
+        if([[urlFolder substringFromIndex:[urlFolder length] - 1] isEqualToString:@"/"]) {
+            urlFolder = [urlFolder substringToIndex:urlFolder.length-1];
+        }
+        
+        NSString* replaceByString = [NSString stringWithFormat:@"\"%@/%@\"", urlFolder, nomFichierImage];
         stringCopy = [stringCopy stringByReplacingOccurrencesOfString:[string substringWithRange:[match range]] withString:replaceByString];
         
         //NSLog(@"stringCopy: %@", stringCopy);

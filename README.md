@@ -52,3 +52,8 @@ Exported file:
 <img width="11" height="14" src="http://www.example.com/images/ca9c24a1e75b36ba81abf90d13fb5212.gif" alt="File Icon”>
 ```
 Extracted image: `ca9c24a1e75b36ba81abf90d13fb5212.gif`
+
+##License
+The MIT License (MIT)
+
+Copyright (c) 2014 Nicolas Mahé

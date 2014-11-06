@@ -35,12 +35,12 @@
 		0354F7AC1A0C195F0069A55E /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		0354F7AD1A0C195F0069A55E /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		0354F7AF1A0C195F0069A55E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		0354F7B21A0C195F0069A55E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0354F7B81A0C195F0069A55E /* Data URL image extractorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Data URL image extractorTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0354F7BD1A0C195F0069A55E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0354F7BE1A0C195F0069A55E /* Data_URL_image_extractorTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Data_URL_image_extractorTests.m; sourceTree = "<group>"; };
 		0354F7C91A0C19940069A55E /* Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64.h; sourceTree = "<group>"; };
 		0354F7CA1A0C19940069A55E /* Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Base64.m; sourceTree = "<group>"; };
+		0396B4201A0C40390019A43D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -266,7 +266,7 @@
 		0354F7B11A0C195F0069A55E /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				0354F7B21A0C195F0069A55E /* Base */,
+				0396B4201A0C40390019A43D /* en */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -357,7 +357,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = "Data URL image extractor/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -369,7 +369,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = "Data URL image extractor/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

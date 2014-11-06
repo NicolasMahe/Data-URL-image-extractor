@@ -33,6 +33,9 @@ gcEIQA7" alt="File Icon”>
 
 The software will create a version of the source file where the data URLs are replaced by a simple URL. It will also create an images folder that contains the extracted images.
 
+##Compatibility
+Mac OS X 10.7 or later. Tested on Mac OS X 10.10.
+
 ##Example
 ###Input
 Source file:
@@ -45,10 +48,15 @@ tKpxKRd1+YEWUoIiUoiEWEAApIDMLGoRCyWiKThenkwDgeGMiggDLEXQkDoTh
 CKNLpQDgjeAsY7MHgECgx8YR8oHwNHfwADBACGh4EDA4iGAYAEBAcQIg0Dk
 gcEIQA7" alt="File Icon”>
 ```
-Url path where the images will be uploaded: http://www.example.com/images/
+Url path where the images will be uploaded: `http://www.example.com/images/`
 ###Output
 Exported file:
 ```
 <img width="11" height="14" src="http://www.example.com/images/ca9c24a1e75b36ba81abf90d13fb5212.gif" alt="File Icon”>
 ```
 Extracted image: `ca9c24a1e75b36ba81abf90d13fb5212.gif`
+
+##License
+The MIT License (MIT)
+
+Copyright (c) 2014 Nicolas Mahé

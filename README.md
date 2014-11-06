@@ -33,6 +33,9 @@ gcEIQA7" alt="File Icon”>
 
 The software will create a version of the source file where the data URLs are replaced by a simple URL. It will also create an images folder that contains the extracted images.
 
+##Compatibility
+Max OS X 10.7 or later. Tested on Max OS X 10.10.
+
 ##Example
 ###Input
 Source file:

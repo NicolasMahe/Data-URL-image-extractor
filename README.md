@@ -48,7 +48,7 @@ tKpxKRd1+YEWUoIiUoiEWEAApIDMLGoRCyWiKThenkwDgeGMiggDLEXQkDoTh
 CKNLpQDgjeAsY7MHgECgx8YR8oHwNHfwADBACGh4EDA4iGAYAEBAcQIg0Dk
 gcEIQA7" alt="File Icon”>
 ```
-Url path where the images will be uploaded: http://www.example.com/images/
+Url path where the images will be uploaded: `http://www.example.com/images/`
 ###Output
 Exported file:
 ```

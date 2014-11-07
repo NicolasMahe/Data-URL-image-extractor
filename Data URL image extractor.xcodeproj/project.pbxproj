@@ -15,6 +15,7 @@
 		0354F7BF1A0C195F0069A55E /* Data_URL_image_extractorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0354F7BE1A0C195F0069A55E /* Data_URL_image_extractorTests.m */; };
 		0354F7CB1A0C19940069A55E /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 0354F7CA1A0C19940069A55E /* Base64.m */; };
 		0396B4231A0C41EA0019A43D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0396B4211A0C41EA0019A43D /* Localizable.strings */; };
+		0396B4271A0C4D890019A43D /* Extractor.m in Sources */ = {isa = PBXBuildFile; fileRef = 0396B4261A0C4D890019A43D /* Extractor.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +44,8 @@
 		0354F7CA1A0C19940069A55E /* Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Base64.m; sourceTree = "<group>"; };
 		0396B4201A0C40390019A43D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0396B4221A0C41EA0019A43D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		0396B4251A0C4D890019A43D /* Extractor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Extractor.h; sourceTree = "<group>"; };
+		0396B4261A0C4D890019A43D /* Extractor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Extractor.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,8 +87,9 @@
 		0354F7A41A0C195F0069A55E /* Data URL image extractor */ = {
 			isa = PBXGroup;
 			children = (
-				0354F7C91A0C19940069A55E /* Base64.h */,
-				0354F7CA1A0C19940069A55E /* Base64.m */,
+				0396B4241A0C4D3A0019A43D /* Libraries */,
+				0396B4251A0C4D890019A43D /* Extractor.h */,
+				0396B4261A0C4D890019A43D /* Extractor.m */,
 				0354F7A71A0C195F0069A55E /* AppDelegate.h */,
 				0354F7A81A0C195F0069A55E /* AppDelegate.m */,
 				0354F7AC1A0C195F0069A55E /* ViewController.h */,
@@ -122,6 +126,15 @@
 				0354F7BD1A0C195F0069A55E /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		0396B4241A0C4D3A0019A43D /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				0354F7C91A0C19940069A55E /* Base64.h */,
+				0354F7CA1A0C19940069A55E /* Base64.m */,
+			);
+			name = Libraries;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -243,6 +256,7 @@
 			files = (
 				0354F7CB1A0C19940069A55E /* Base64.m in Sources */,
 				0354F7AE1A0C195F0069A55E /* ViewController.m in Sources */,
+				0396B4271A0C4D890019A43D /* Extractor.m in Sources */,
 				0354F7AB1A0C195F0069A55E /* main.m in Sources */,
 				0354F7A91A0C195F0069A55E /* AppDelegate.m in Sources */,
 			);

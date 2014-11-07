@@ -7,8 +7,7 @@
 //
 
 #import "ViewController.h"
-#import "Base64.h"
-#import <CommonCrypto/CommonDigest.h>
+#import "Extractor.h"
 
 @implementation ViewController
 
@@ -78,7 +77,7 @@
 
 
 - (IBAction)tapButtonLaunchAnalyze:(id)sender {
-    [self analyzeAndSave];
+    [self launchExtraction];
 }
 
 
@@ -104,7 +103,7 @@
     return NO;
 }
 
--(void)analyzeAndSave
+-(void)launchExtraction
 {
     if(![self checkIfAnalyzeIsReady]) {
         return;
@@ -118,146 +117,20 @@
     [self.buttonExportFolder setEnabled:NO];
     [self.textfieldUrlFolder setEnabled:NO];
     [self.buttonLaunchAnalyze setEnabled:NO];
-    [self.labelInProgress setStringValue:NSLocalizedString(@"Analyze in progress", nil)];
+    [self.labelInProgress setStringValue:NSLocalizedString(@"Extraction in progress", nil)];
     
+    Extractor* extractor = [[Extractor alloc] init];
+    [extractor extractWithFile:[self.labelFileChoosed stringValue] exportFolder:[self.labelExportFolder stringValue] url:[self.textfieldUrlFolder stringValue] successFunction:^(NSString*status) {
+        NSLog(@"status: %@", status);
+        [self.buttonChooseFile setEnabled:YES];
+        [self.buttonExportFolder setEnabled:YES];
+        [self.textfieldUrlFolder setEnabled:YES];
+        [self.loadingIndicator setHidden:YES];
+        [self.labelInProgress setStringValue:NSLocalizedString(@"Finish", nil)];
+        [self.buttonLaunchAnalyze setEnabled:YES];
+    }];
     
-    [self performSelectorInBackground:@selector(analyzeAndSaveInBackground) withObject:nil];
-}
--(void)analyzeAndSaveInBackground
-{
-    NSDateFormatter *format = [[NSDateFormatter alloc] init];
-    [format setDateFormat:@"yyyy-MM-dd HH-mm-ss"];
-    NSDate *now = [NSDate date];
-    NSString *nowString = [format stringFromDate:now];
-    
-    NSString* fileToAnalyze = [self.labelFileChoosed stringValue];
-    NSString* fileToAnalyzeExt = [fileToAnalyze pathExtension];
-    
-    NSString* fileToSave = [[self.labelExportFolder stringValue] stringByAppendingString:[NSString stringWithFormat:@"/export - %@.%@", nowString, fileToAnalyzeExt]];
-    
-    NSError* error;
-    NSString * fileContents = [NSString stringWithContentsOfFile:fileToAnalyze encoding:NSUTF8StringEncoding error:&error];
-    
-    if(error != nil) {
-        NSLog(@"error: %@", error);
-    } else {
-        //NSLog(@"%@", fileContents);
-        
-        NSString* newSql = [self replaceImageInString:fileContents];
-        
-        //NSLog(@"newSql: %@", newSql);
-        
-        [self saveString:newSql toFile:fileToSave];
-    }
-    
-    [self performSelectorOnMainThread:@selector(analyzeAndSaveHasFinish) withObject:nil waitUntilDone:NO];
-}
-
--(void)analyzeAndSaveHasFinish
-{
-    [self.buttonChooseFile setEnabled:YES];
-    [self.buttonExportFolder setEnabled:YES];
-    [self.textfieldUrlFolder setEnabled:YES];
-    [self.loadingIndicator setHidden:YES];
-    [self.labelInProgress setStringValue:NSLocalizedString(@"Finish", nil)];
-    [self.buttonLaunchAnalyze setEnabled:YES];
-}
-
--(NSString*)replaceImageInString:(NSString*)string
-{
-    NSString* folderToSave = [[self.labelExportFolder stringValue] stringByAppendingString:@"/images/"];
-    [[NSFileManager defaultManager] createDirectoryAtPath:folderToSave withIntermediateDirectories:YES attributes:nil error:nil];
-    
-    NSError *error = NULL;
-    
-    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"\"data:image/(png|jpeg|gif);base64,([a-zA-Z0-9/;+=]*)\"" options:NSRegularExpressionCaseInsensitive error:&error];
-    if (error)
-    {
-        NSLog(@"Couldn't create regex with given string and options");
-        return nil;
-    }
-    
-    // Create a range for it. We do the replacement on the whole
-    // range of the text view, not only a portion of it.
-    NSRange range = NSMakeRange(0, string.length);
-    
-    
-    // Call the NSRegularExpression method to do the replacement for us
-    //NSString *afterText = [regex stringByReplacingMatchesInString:string options:0 range:range withTemplate:@""];
-    
-    NSString* stringCopy = [string copy];
-    
-    NSArray* matches = [regex matchesInString:string options:0 range:range];
-    
-    for (NSTextCheckingResult* match in matches) {
-        NSRange group1 = [match rangeAtIndex:1];
-        NSString* imageType = [string substringWithRange:group1];
-        //NSLog(@"imageType: %@", imageType);
-        
-        NSRange group2 = [match rangeAtIndex:2];
-        NSString* matchText = [string substringWithRange:group2];
-        //NSLog(@"match: %@", matchText);
-        
-        NSData* image = [self convertFromBase64ToImage:matchText];
-        NSString* md5 = [self md5:matchText];
-        
-        if([imageType isEqualToString:@"jpeg"]) {
-            imageType = @"jpg";
-        }
-        
-        NSString* nomFichierImage = [NSString stringWithFormat:@"%@.%@", md5, imageType];
-        
-        [self saveData:image toFile:[folderToSave stringByAppendingString:nomFichierImage]];
-        
-        NSString* urlFolder = [self.textfieldUrlFolder stringValue];
-        if([[urlFolder substringFromIndex:[urlFolder length] - 1] isEqualToString:@"/"]) {
-            urlFolder = [urlFolder substringToIndex:urlFolder.length-1];
-        }
-        
-        NSString* replaceByString = [NSString stringWithFormat:@"\"%@/%@\"", urlFolder, nomFichierImage];
-        stringCopy = [stringCopy stringByReplacingOccurrencesOfString:[string substringWithRange:[match range]] withString:replaceByString];
-        
-        //NSLog(@"stringCopy: %@", stringCopy);
-        //NSLog(@"[string substringWithRange:[match range]]: %@", [string substringWithRange:[match range]]);
-    }
-    
-    return stringCopy;
 }
 
 
-
-#pragma mark others
-
--(void)saveString:(NSString*)string toFile:(NSString*)file
-{
-    [[NSFileManager defaultManager] createFileAtPath:file contents:nil attributes:nil];
-    [string writeToFile:file atomically:YES encoding:NSUTF8StringEncoding error:nil];
-}
--(void)saveData:(NSData*)data toFile:(NSString*)file
-{
-    [[NSFileManager defaultManager] createFileAtPath:file contents:nil attributes:nil];
-    [data writeToFile:file atomically:YES];
-}
-
--(NSData*)convertFromBase64ToImage:(NSString*)imageBase64
-{
-    NSData* data = [Base64 decode:imageBase64];
-    
-    return data;
-}
-
-- (NSString *) md5:(NSString *) input
-{
-    const char *cStr = [input UTF8String];
-    unsigned char digest[16];
-    CC_MD5( cStr, strlen(cStr), digest ); // This is the md5 call
-    
-    NSMutableString *output = [NSMutableString stringWithCapacity:CC_MD5_DIGEST_LENGTH * 2];
-    
-    for(int i = 0; i < CC_MD5_DIGEST_LENGTH; i++)
-        [output appendFormat:@"%02x", digest[i]];
-    
-    return  output;
-    
-}
 @end

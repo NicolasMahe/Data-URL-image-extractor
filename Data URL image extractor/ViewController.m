@@ -18,8 +18,8 @@
     [super viewDidLoad];
     
     // Do any additional setup after loading the view.
-    [self.labelFileChoosed setStringValue:@"None"];
-    [self.labelExportFolder setStringValue:@"None"];
+    [self.labelFileChoosed setStringValue:NSLocalizedString(@"None", nil)] ;
+    [self.labelExportFolder setStringValue:NSLocalizedString(@"None", nil)];
     [self.labelInProgress setHidden:YES];
     [self.loadingIndicator setHidden:YES];
 }
@@ -88,15 +88,15 @@
 
 -(BOOL)checkIfAnalyzeIsReady
 {
-    if([[self.labelFileChoosed stringValue] isEqualToString:@"None"]) {
+    if([[self.labelFileChoosed stringValue] isEqualToString:NSLocalizedString(@"None", nil)]) {
         [self.labelInProgress setHidden:NO];
-        [self.labelInProgress setStringValue:@"Please choose the file to analyze"];
-    } else if([[self.labelExportFolder stringValue] isEqualToString:@"None"]) {
+        [self.labelInProgress setStringValue:NSLocalizedString(@"Please choose the file to analyze", nil)];
+    } else if([[self.labelExportFolder stringValue] isEqualToString:NSLocalizedString(@"None", nil)]) {
         [self.labelInProgress setHidden:NO];
-        [self.labelInProgress setStringValue:@"Please choose an export folder"];
+        [self.labelInProgress setStringValue:NSLocalizedString(@"Please choose an export folder", nil)];
     } else if([[self.textfieldUrlFolder stringValue] isEqualToString:@""]) {
         [self.labelInProgress setHidden:NO];
-        [self.labelInProgress setStringValue:@"Please enter the url"];
+        [self.labelInProgress setStringValue:NSLocalizedString(@"Please enter the url", nil)];
     } else {
         return YES;
     }
@@ -118,7 +118,7 @@
     [self.buttonExportFolder setEnabled:NO];
     [self.textfieldUrlFolder setEnabled:NO];
     [self.buttonLaunchAnalyze setEnabled:NO];
-    [self.labelInProgress setStringValue:@"Analyze in progress"];
+    [self.labelInProgress setStringValue:NSLocalizedString(@"Analyze in progress", nil)];
     
     
     [self performSelectorInBackground:@selector(analyzeAndSaveInBackground) withObject:nil];
@@ -159,7 +159,7 @@
     [self.buttonExportFolder setEnabled:YES];
     [self.textfieldUrlFolder setEnabled:YES];
     [self.loadingIndicator setHidden:YES];
-    [self.labelInProgress setStringValue:@"Finish"];
+    [self.labelInProgress setStringValue:NSLocalizedString(@"Finish", nil)];
     [self.buttonLaunchAnalyze setEnabled:YES];
 }
 

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6250"/>
     </dependencies>
     <scenes>
@@ -335,7 +334,7 @@
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dY5-FE-8YL">
                                 <rect key="frame" x="138" y="292" width="175" height="35"/>
                                 <animations/>
-                                <buttonCell key="cell" type="bevel" title="Select the source file" bezelStyle="regularSquare" image="07017749-90C9-47EB-8B40-E3119CBE7CAF" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="UnT-KN-DJt">
+                                <buttonCell key="cell" type="bevel" title="Select the source file" bezelStyle="regularSquare" image="73CF4465-C873-4E10-9CFB-F907FE8DD61A" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="UnT-KN-DJt">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" size="15" name="HelveticaNeue-Light"/>
                                 </buttonCell>
@@ -474,7 +473,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="07017749-90C9-47EB-8B40-E3119CBE7CAF" width="1" height="1">
+        <image name="73CF4465-C873-4E10-9CFB-F907FE8DD61A" width="1" height="1">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPj9YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQsLzI4O1UkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw

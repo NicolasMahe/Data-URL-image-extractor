@@ -60,6 +60,7 @@
     
     NSRange range = NSMakeRange(0, string.length);
     NSArray* matches = [regex matchesInString:string options:0 range:range];
+    int rangeDecalage = 0;
     
     for (NSTextCheckingResult* match in matches) {
         //quote type
@@ -92,7 +93,11 @@
         }
         
         NSString* replaceByString = [NSString stringWithFormat:@"%@%@/%@%@", quoteType, urlFolder, nomFichierImage, quoteType];
-        stringCopy = [stringCopy stringByReplacingOccurrencesOfString:[string substringWithRange:[match range]] withString:replaceByString];
+        
+        NSString* stringStart = [stringCopy substringToIndex:[match range].location - rangeDecalage];
+        NSString* stringEnd = [stringCopy substringFromIndex:[match range].location + [match range].length - rangeDecalage];
+        stringCopy = [stringStart stringByAppendingString:[replaceByString stringByAppendingString:stringEnd]];
+        rangeDecalage += [match range].length - [replaceByString length];
     }
     
     return stringCopy;

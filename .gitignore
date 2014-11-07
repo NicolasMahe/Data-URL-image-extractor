@@ -18,3 +18,5 @@ DerivedData
 *.xcuserstat
 .DS_Store
 xcuserdata/
+xcuserstate
+xcsettings

@@ -49,12 +49,22 @@
     XCTAssert([result isEqualToString:resultStrong], @"testDoubleQuote pass");
 }
 
-/*- (void)testSimplePerformance {
-    // This is an example of a performance test case.
+-(void)testSimplePerformanceTwo
+{
+    NSError *error;
+    NSString *path = [[NSBundle bundleForClass:[self class]] pathForResource:@"testBigDataInput" ofType:@"txt"];
+    NSString *testString = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&error];
+    NSString* url = @"http://www.example.com/images/";
+    
+    
+    if (error)
+        NSLog(@"Error reading file: %@", error.localizedDescription);
+    
+    Extractor* extractor = [[Extractor alloc] init];
+    
     [self measureBlock:^{
-        // Put the code you want to measure the time of here.
-        [self testSimpleQuote];
+        [extractor replaceImageInString:testString withUrl:url saveInFolder:nil];
     }];
-}*/
+}
 
 @end

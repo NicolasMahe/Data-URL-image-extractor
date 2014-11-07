@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		032365DD1A0D0926004DD917 /* testBigDataInput.txt in Resources */ = {isa = PBXBuildFile; fileRef = 032365DC1A0D0926004DD917 /* testBigDataInput.txt */; };
 		0354F7A91A0C195F0069A55E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0354F7A81A0C195F0069A55E /* AppDelegate.m */; };
 		0354F7AB1A0C195F0069A55E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0354F7AA1A0C195F0069A55E /* main.m */; };
 		0354F7AE1A0C195F0069A55E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0354F7AD1A0C195F0069A55E /* ViewController.m */; };
@@ -29,6 +30,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		032365DC1A0D0926004DD917 /* testBigDataInput.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = testBigDataInput.txt; path = "Data URL image extractorTests/testBigDataInput.txt"; sourceTree = SOURCE_ROOT; };
 		0354F7A21A0C195F0069A55E /* Data URL image extractor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Data URL image extractor.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0354F7A61A0C195F0069A55E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0354F7A71A0C195F0069A55E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 		0354F7BC1A0C195F0069A55E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				032365DC1A0D0926004DD917 /* testBigDataInput.txt */,
 				0354F7BD1A0C195F0069A55E /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -228,6 +231,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				032365DD1A0D0926004DD917 /* testBigDataInput.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

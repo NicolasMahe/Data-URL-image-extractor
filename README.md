@@ -1,6 +1,9 @@
 Data URL image extractor
 ===========================
 
+![alt text](https://github.com/NicolasMahe/Data-URL-image-extractor/blob/master/screenshot.png "Screenshot")
+
+
 This software extracts the images encoded as data URL and save them in separate image files.
 
 It significantly reduces your SQL dump files or HTML pages by replacing the heavy data URL images by simple absolute URLs that point to the freshly extracted images.
